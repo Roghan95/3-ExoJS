@@ -7,40 +7,57 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="mesCases"></div>
+    <div id="board"></div>
     <p id="msg"></p>
     
     <script>
-        const mesCases = document.querySelector("#mesCases")
-        const cases = document.createElement("div")
+        // Crée une div avec une classe "box"
+        const box = document.createElement("div")
+        box.classList.add("box")
+        
+        // Sélectionne l'élément avec l'ID "board" (certainement une balise conteneur pour le jeu)
+        const board = document.querySelector("#board")
+        
+        // Sélectionne le premier élément "p" dans le document (certainement un élément pour afficher des messages du jeu)
         const msg = document.querySelector("p")
-
-        let tour = 0
         
-        cases.classList.add("box")
-        
+        // Initialise une variable pour compter le nombre de tours
+        let tour = 0;
+    
+        // Boucle pour créer 9 boîtes (certainement les cases du jeu)
         for(let i = 1; i <= 9; i++) {
-            let mesCases = cases.cloneNode()
-            mesCases.appendChild(mesCases)
-            mesCases.addEventListener('click', click) {
-                function click() {
-                    if (i % 2 === 0) {
-                        mesCases.innerText = "X"
-                        msg.innerText = "Tour de O"
-                    } else {
-                        mesCases.innerText = "O"
-                        msg.innerText = "Tour de X"
-                    }
-                    mesCases.removeEventListener("click", click);
-
-                    tour += 1;
-                    if(tour === 9)
-                    msg.innerText = "Partie terminée";
+            // Clone la boîte originale pour créer une nouvelle boîte
+            let newbox = box.cloneNode()
+            // Ajoute la nouvelle boîte au conteneur "board"
+            board.appendChild(newbox)
+    
+            // Ajoute un écouteur d'événements "click" à chaque nouvelle boîte
+            newbox.addEventListener('click', function() {
+                // Vérifie si c'est le tour du joueur X (tour pair) ou du joueur O (tour impair)
+                if (tour % 2 === 0) {
+                    // Place un "X" dans la boîte et met à jour le message indiquant le tour du joueur O
+                    newbox.innerText = "X"
+                    msg.innerText = "Tour de O"
+                } else {
+                    // Place un "O" dans la boîte et met à jour le message indiquant le tour du joueur X
+                    newbox.innerText = "O"
+                    msg.innerText = "Tour de X"
                 }
-            }
-
+    
+                // Supprime l'écouteur d'événements "click" pour empêcher d'autres clics sur cette boîte
+                newbox.removeEventListener("click", this);
+    
+                // Incrémente le compteur de tours
+                tour += 1;
+    
+                // Vérifie si tous les 9 tours sont terminés (partie terminée)
+                if(tour === 9) {
+                    console.log(tour) // Affiche le nombre total de tours dans la console (inutile)
+                    msg.innerText = "Partie terminée"; // Met à jour le message pour indiquer que la partie est terminée
+                }
+            })
         }
-
     </script>
+    
 </body>
 </html>

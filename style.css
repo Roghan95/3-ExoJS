@@ -1,23 +1,33 @@
 body {
-    background-image: url(img.jpg);
-    background-position: center;
-    background-attachment: fixed;
+    background-color: rgb(172, 70, 70);
 }
 
 
-#mesCases {
+#board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5px;
+    width: 250px;
+    height: 250px; /* Définissez une hauteur appropriée pour l'affichage */
+    align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
-.cases {
+ /* Personnalisation des box */
+.box {
     width: 80px;
     height: 80px;
-    margin: 5px;
+    margin: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.5;
+    cursor: pointer;
     background-color: white;
-    border: 1px solid black;
+
+}
+
+.msg {
+    color: white;
 }
