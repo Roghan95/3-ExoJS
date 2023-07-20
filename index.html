@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mesCases"></div>
+    <p id="msg"></p>
+    
+    <script>
+        const mesCases = document.querySelector("#mesCases")
+        const cases = document.createElement("div")
+        const msg = document.querySelector("p")
+
+        let tour = 0
+        
+        cases.classList.add("box")
+        
+        for(let i = 1; i <= 9; i++) {
+            let newCases = cases.cloneNode()
+            mesCases.appendChild(mesCases)
+            mesCases.addEventListener('click', click) {
+                function click() {
+                    if (i % 2 === 0) {
+                        mesCases.innerText = "X"
+                        msg.innerText = "Tour de O"
+                    } else {
+                        mesCases.innerText = "O"
+                        msg.innerText = "Tour de X"
+                    }
+                    mesCases.removeEventListener("click", click);
+
+                    tour += 1;
+                    if(tour === 9)
+                    msg.innerText = "Partie terminée";
+                }
+            }
+
+        }
+
+    </script>
+</body>
+</html>
